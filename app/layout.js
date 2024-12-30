@@ -20,7 +20,7 @@ export const metadata = {
     url: "https://pradeepsahu.com",
     images: [
       {
-        url: "https://pradeepsahu.com/og-image.jpg",
+        url: "https://avatars.githubusercontent.com/u/94203408?v=4",
         width: 800,
         height: 600,
         alt: "Pradeep Sahu Portfolio",
@@ -32,21 +32,13 @@ export const metadata = {
     card: "summary_large_image",
     title: "Pradeep Sahu Portfolio",
     description: "A full-stack developer's portfolio",
-    images: ["https://pradeepsahu.com/twitter-image.jpg"],
+    images: ["https://x.com/Pradeepsahu__/photo"],
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: {
     index: true,
     follow: true,
     nocache: false,
   },
-  themeColor: "#ffffff",
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/shortcut-icon.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
   custom: {
     author: "Pradeep Sahu",
     keywords: ["Pradeep Sahu", "Portfolio", "Full-Stack Developer"],
