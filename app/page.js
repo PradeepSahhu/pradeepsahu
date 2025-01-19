@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useEffect } from "react";
+import ProjectItem from "@/components/Home/Project";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(false);
@@ -9,13 +10,12 @@ export default function Home() {
     const handleScroll = () => {
       // Check if the scroll position reaches a certain point (e.g., 200px)
       const scrollPosition = window.scrollY;
-      setScrollY(scrollPosition > 900);
+      setScrollY(scrollPosition > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    console.log(scrollY);
-  }, []);
+  }, [scrollY]);
   return (
     <div className="bg-white h-screen">
       <div className="h-screen w-screen">
@@ -67,11 +67,11 @@ export default function Home() {
             <div className="">
               <div>
                 <p className="font-extrabold text-6xl">
-                  Create Designer and Developer
+                  Creator Designer and Developer
                 </p>
               </div>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center my-3">
                 <button className="border-[#FFFF] border-[1px] px-8 py-3 rounded-xl bg-transparent  hover:scale-90 transition-all ">
                   <span className="hover:translate-x-10 hover:transition-transform hover:translate-y-8 hover:tra">
                     Projects
@@ -82,11 +82,10 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-screen w-screen">
-          <div>
-            <div></div>
-
-            <div></div>
+        <div className="h-screen w-screen bg-white text-black transition-all duration-300 ">
+          <div className="mx-20 ">
+            <div className=""></div>
+            <ProjectItem />
           </div>
         </div>
       </div>
