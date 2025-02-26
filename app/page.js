@@ -1,7 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useEffect } from "react";
-import ProjectItem from "@/components/Home/Project";
+import ProjectItem from "./components/components/Home/Project";
+import Link from "next/link";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(false);
@@ -17,8 +18,8 @@ export default function Home() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [scrollY]);
   return (
-    <div className="bg-white h-screen">
-      <div className="h-screen w-screen">
+    <div className=" h-screen bg-white dark:bg-black">
+      <div className="h-screen w-screen bg-white dark:bg-black">
         <div className="relative h-screen w-screen">
           <img
             className="absolute inset-0 h-full w-screen object-cover brightness-50"
@@ -34,15 +35,17 @@ export default function Home() {
             }`}
           >
             <div className="">
-              <button className="py-5  font-extrabold text-2xl  ">
+              <button className="py-5  font-extrabold text-2xl  flex-left">
                 Pradeep Sahu
               </button>
             </div>
             <div className="py-5 ">
               <button className=" font-extralight   ">Home</button>
             </div>
-            <div className="py-5 ">
-              <p className="font-extralight   ">Projects</p>
+            <div className="py-5 cursor">
+              <Link className="font-extralight   " href="/Projects">
+                Projects
+              </Link>
             </div>
             <div className="py-5 ">
               <p className="font-extralight   ">Contact</p>
@@ -50,12 +53,6 @@ export default function Home() {
             <div className="py-5 ">
               <p className="font-extralight   ">Pradeep Sahu</p>
             </div>
-            <div className="py-5 ">
-              <p className="font-extralight   ">Pradeep Sahu</p>
-            </div>
-            <button className="py-5 ">
-              <p className="font-extralight   ">Pradeep Sahu</p>
-            </button>
           </div>
           <div className="flex justify-center items-center align-middle">
             <hr className="border-1 border-white w-10/12 opacity-40" />
@@ -73,9 +70,12 @@ export default function Home() {
 
               <div className="flex justify-center my-3">
                 <button className="border-[#FFFF] border-[1px] px-8 py-3 rounded-xl bg-transparent  hover:scale-90 transition-all ">
-                  <span className="hover:translate-x-10 hover:transition-transform hover:translate-y-8 hover:tra">
+                  <Link
+                    className="hover:translate-x-10 hover:transition-transform hover:translate-y-8 hover:tra"
+                    href="/Projects"
+                  >
                     Projects
-                  </span>
+                  </Link>
                 </button>
               </div>
             </div>
