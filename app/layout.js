@@ -54,7 +54,9 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased `}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <ThemeSwitcher />
+          <div className="absolute top-4 right-4">
+            <ThemeSwitcher />
+          </div>
           {children}
         </ThemeProvider>
       </body>

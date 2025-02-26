@@ -9,7 +9,7 @@ const ProjectItem = () => {
   useEffect(() => {});
   return (
     <>
-      <div className="w-80 absolute -top-36 justify-center">
+      <div className="w-80 absolute -top-36 justify-center ">
         <button className="  text-black text-center  bg-white px-10 py-5 rounded-t-lg w-72 ">
           Strategy
         </button>
