@@ -7,13 +7,13 @@ export default function Project() {
       <NavigationBar />
       <div className="bg-white text-black dark:bg-black dark:text-white flex flex-wrap mx-10 my-10 ml-24">
         <Card goto={"./Projects/thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
-        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./Projects/thisiduniqueid"} />
       </div>
     </div>
   );
