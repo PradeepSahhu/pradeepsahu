@@ -6,14 +6,14 @@ export default function Project() {
     <div className="flex">
       <NavigationBar />
       <div className="bg-white text-black dark:bg-black dark:text-white flex flex-wrap mx-10 my-10 ml-24">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <Card goto={"./Projects/thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
+        <Card goto={"./thisiduniqueid"} />
       </div>
     </div>
   );

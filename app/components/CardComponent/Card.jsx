@@ -1,9 +1,14 @@
 "use client";
+import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
 
-export default function Card() {
+export default function Card({ goto }) {
   return (
-    <div className="relative w-64 bg-white shadow-lg rounded-2xl overflow-hidden p-4 transition-transform duration-300 hover:scale-105 mx-5 my-2 dark:bg-black dark:text-white">
+    <div
+      className="relative w-64 bg-white rounded-2xl overflow-hidden p-4 mx-5 my-2 
+    shadow-[4px_4px_10px_rgba(0,0,0,0.5)] dark:bg-black dark:text-white 
+    dark:shadow-[8px_8px_10px_rgba(255,255,255,0.2)]"
+    >
       <img
         className="w-full h-40 object-cover rounded-lg"
         src="./Home/sc2.jpeg"
@@ -36,9 +41,9 @@ export default function Card() {
           </a>
         </div>
         <div className="mt-4 text-center">
-          <a href="#" className="text-blue-600 hover:underline">
+          <Link href={goto} className="text-blue-600 hover:underline">
             Know More
-          </a>
+          </Link>
         </div>
       </div>
     </div>
