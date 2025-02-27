@@ -1,12 +1,65 @@
 "use client";
 import { useEffect, useState } from "react";
+
 import {
-  FaGithub,
-  FaReact,
-  FaNodeJs,
-  FaDatabase,
-  FaExternalLinkAlt,
+  FaGithub, // GitHub Icon
+  FaReact, // React.js Icon
+  FaNodeJs, // Node.js Icon
+  FaDatabase, // Database Icon
+  FaExternalLinkAlt, // External Link Icon
+  FaDocker, // Docker Icon
+  FaAws, // AWS Cloud Icon
+  FaPython, // Python Icon
+  FaJava, // Java Icon
 } from "react-icons/fa";
+
+import {
+  SiMongodb, // MongoDB Icon
+  SiExpress, // Express.js Icon
+  SiNextdotjs, // Next.js Icon
+  SiTailwindcss, // Tailwind CSS Icon
+  SiRedux, // Redux Icon
+  SiPostgresql, // PostgreSQL Icon
+  SiMysql, // MySQL Icon
+  SiFirebase, // Firebase Icon
+  SiJest, // Jest Testing Icon
+  SiSpringboot, // Spring Boot Icon
+  SiRust, // Rust Language Icon
+} from "react-icons/si";
+
+import {
+  TbBrandEthereum, // Ethereum Icon
+  TbBrandReact, // React Icon (Alternative)
+  TbBrandNextjs, // Next.js Icon (Alternative)
+} from "react-icons/tb";
+
+import {
+  BiBitcoin, // Bitcoin Icon
+  BiCodeAlt, // Code Icon
+} from "react-icons/bi";
+
+import {
+  IoLogoElectron, // Electron.js Icon
+  IoIosCloud, // Cloud Icon
+} from "react-icons/io";
+
+import {
+  RiShieldUserFill, // Security / Authentication Icon
+  RiJavascriptFill, // JavaScript Icon
+} from "react-icons/ri";
+
+import {
+  MdOutlineSecurity, // Security Icon (Alternative)
+  MdOutlineStorage, // Storage / Database Icon
+} from "react-icons/md";
+
+import {
+  GiArtificialIntelligence, // AI Icon
+} from "react-icons/gi";
+
+import {
+  GrGraphQl, // GraphQL Icon
+} from "react-icons/gr";
 
 import Image from "next/image";
 
@@ -34,11 +87,20 @@ const project = {
 
 export default function ProjectDetails() {
   const [currentImage, setCurrentImage] = useState(0);
+  const [apiData, setApiData] = useState();
+
+  console.log(process.env.API);
+  const api = process.env.API;
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % project.images.length);
-    }, 3000);
+    }, 5000);
+
+    const response = fetch(`${api}/getAll`);
+    setApiData(response);
+    console.log(response);
+
     return () => clearInterval(interval);
   }, []);
 

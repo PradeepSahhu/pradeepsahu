@@ -82,7 +82,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="h-screen w-screen bg-white text-black transition-all duration-300 relative">
+        {/* <div className="h-screen w-screen bg-white text-black transition-all duration-300 relative">
           <div className="mx-20 ">
             <div className="flex gap-x-5"></div>
 
@@ -99,7 +99,7 @@ export default function Home() {
               <ProjectItem />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
