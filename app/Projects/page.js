@@ -38,7 +38,7 @@ export default function Project() {
             <Card
               imageSrc={`${eachData.mainImage}`}
               key={`${eachData["_id"]}`}
-              goto={`./Projects/${eachData._id}`}
+              goto={`/Projects/${eachData._id}`}
               title={`${eachData.projectName} `}
               description={`${eachData.projectDescription}`}
               link={`${eachData.links}`}
@@ -47,9 +47,9 @@ export default function Project() {
             />
           ))
         )}
-        {[7].map(() => (
-          <Card goto={"./Projects/thisiduniqueid"} />
-        ))}
+        {/* {[7].map(() => (
+          // <Card goto={"./Projects/thisiduniqueid"} />
+        ))} */}
       </div>
     </div>
   );

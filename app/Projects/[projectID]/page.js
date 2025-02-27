@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   FaGithub, // GitHub Icon
@@ -85,24 +86,45 @@ const project = {
   date: "Feb 25, 2025",
 };
 
-export default function ProjectDetails() {
-  const [currentImage, setCurrentImage] = useState(0);
-  const [apiData, setApiData] = useState();
+export default function ProjectDetails({ projectID }) {
+  // console.log(projectID);
 
-  console.log(process.env.API);
-  const api = process.env.API;
+  const [currentImage, setCurrentImage] = useState(0);
+
+  // useEffect(() => {
+  //   if (!projectID) return;
+
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(
+  //         `${process.env.NEXT_PUBLIC_API}/${projectID}`
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("Failed to fetch project data");
+  //       }
+  //       const data = await response.json();
+  //       setProject(data);
+  //     } catch (error) {
+  //       console.error("Error fetching data:", error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, [projectID]);
 
   useEffect(() => {
+    if (!project || !project.images) return;
+
     const interval = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % project.images.length);
     }, 5000);
 
-    const response = fetch(`${api}/getAll`);
-    setApiData(response);
-    console.log(response);
-
     return () => clearInterval(interval);
-  }, []);
+  }, [project]);
+
+  if (!project) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white dark:bg-black shadow-lg rounded-lg mt-10">
