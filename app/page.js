@@ -5,22 +5,10 @@ import ProjectItem from "./components/components/Home/Project";
 import Link from "next/link";
 
 export default function Home() {
-  const [scrollY, setScrollY] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Check if the scroll position reaches a certain point (e.g., 200px)
-      const scrollPosition = window.scrollY;
-      setScrollY(scrollPosition > 300);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [scrollY]);
   return (
     <div className=" h-screen bg-white dark:bg-black">
       <div className="h-screen w-screen bg-white dark:bg-black">
-        <div className="relative h-screen w-screen">
+        <div className="relative h-screen w-screen z-0">
           <img
             className="absolute inset-0 h-full w-screen object-cover brightness-50"
             src="./Home/sc2.jpeg"
@@ -28,30 +16,32 @@ export default function Home() {
           />
         </div>
 
-        <div className="fixed  py-5  top-0 left-0 w-screen">
+        <div className="fixed  py-5  top-0 left-0 w-screen z-10 bg-transparent ">
           <div
-            className={`flex gap-x-10 justify-center overflow-hidden transition-all duration-500 ${
+            className={`flex gap-x-52 justify-center overflow-hidden transition-all duration-500 ${
               scrollY ? "bg-white text-black" : "transparent"
             }`}
           >
-            <div className="">
-              <button className="py-5  font-extrabold text-2xl  flex-left">
+            <div className="py-5 ">
+              <Link
+                href="./Admin"
+                className="py-5  font-extrabold text-2xl  flex-left "
+              >
                 Pradeep Sahu
-              </button>
+              </Link>
             </div>
             <div className="py-5 ">
               <button className=" font-extralight   ">Home</button>
             </div>
             <div className="py-5 cursor">
-              <Link className="font-extralight   " href="/Projects">
+              <Link className="font-extralight" href="/Projects">
                 Projects
               </Link>
             </div>
             <div className="py-5 ">
-              <p className="font-extralight   ">Contact</p>
-            </div>
-            <div className="py-5 ">
-              <p className="font-extralight   ">Pradeep Sahu</p>
+              <Link href="" className="font-extralight   ">
+                Contact
+              </Link>
             </div>
           </div>
           <div className="flex justify-center items-center align-middle">
@@ -81,25 +71,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* <div className="h-screen w-screen bg-white text-black transition-all duration-300 relative">
-          <div className="mx-20 ">
-            <div className="flex gap-x-5"></div>
-
-            <div>
-              <ProjectItem />
-            </div>
-            <div>
-              <ProjectItem />
-            </div>
-            <div>
-              <ProjectItem />
-            </div>
-            <div>
-              <ProjectItem />
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );
