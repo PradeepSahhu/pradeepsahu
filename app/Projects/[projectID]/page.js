@@ -219,10 +219,7 @@ export default function ProjectDetails({ params }) {
       <div className="relative mt-4 w-full h-64 overflow-hidden rounded-lg">
         <img
           src={project?.projectImages?.[currentImage] || "/Home/sc1.jpeg"}
-          // src="/Home/sc1.jpeg"
           alt={project.name}
-          // layout="fill"
-          // objectfit="fit"
           className="rounded-lg object-contain w-full h-full"
         />
       </div>
