@@ -44,6 +44,7 @@ export default function Project() {
               link={`${eachData.links}`}
               githublink={`${eachData.githubLink}`}
               allData={`${eachData}`}
+              clickedOnIt={`${eachData["_id"]}`}
             />
           ))
         )}
