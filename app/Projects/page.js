@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Card from "../components/CardComponent/Card";
 import NavigationBar from "../components/Navigation/NavigationBar";
+import ProjectLoading from "../components/Loaders/ProjectLoading";
 
 export default function Project() {
   const [apiData, setApiData] = useState([]);
@@ -28,11 +29,13 @@ export default function Project() {
   return (
     <div className="flex">
       <NavigationBar />
+
+      {/* <div className="">
+        <button className="bg-slate-700 px-5 py-2">Sort by Name </button>
+      </div> */}
       <div className="bg-white text-black dark:bg-black dark:text-white flex flex-wrap mx-10 my-10 ml-24">
         {loading ? (
-          <div className="flex justify-center w-full align-middle">
-            <p className="tex-lg font-extrabold">Portfolio Projects</p>
-          </div>
+          <ProjectLoading />
         ) : (
           apiData.map((eachData) => (
             <Card

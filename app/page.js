@@ -18,9 +18,7 @@ export default function Home() {
 
         <div className="fixed  py-5  top-0 left-0 w-screen z-10 bg-transparent ">
           <div
-            className={`flex gap-x-52 justify-center overflow-hidden transition-all duration-500 ${
-              scrollY ? "bg-white text-black" : "transparent"
-            }`}
+            className={`flex gap-x-52 justify-center overflow-hidden transition-all duration-500 `}
           >
             <div className="py-5 ">
               <Link
