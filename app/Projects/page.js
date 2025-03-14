@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/CardComponent/Card";
 import NavigationBar from "../components/Navigation/NavigationBar";
 import ProjectLoading from "../components/Loaders/ProjectLoading";
+import EarthWithSatellites from "../components/Loaders/EarthLoading";
 
 export default function Project() {
   const [apiData, setApiData] = useState([]);
@@ -37,6 +38,7 @@ export default function Project() {
         {loading ? (
           <ProjectLoading />
         ) : (
+          // <EarthWithSatellites />
           apiData.map((eachData) => (
             <Card
               imageSrc={`${eachData.mainImage}`}
