@@ -3,12 +3,12 @@ import React, { useState } from "react";
 
 const ProjectForm = () => {
   const [formData, setFormData] = useState({
-    projectName: "NFT Marketplace Canvas",
-    projectDescription: "NFT Marketplace Canvas is a decentralized platform...",
-    githubLink: "https://github.com/PradeepSahhu/CodeAnt_AI",
+    projectName: "",
+    projectDescription: "",
+    githubLink: "",
     date: new Date().toISOString().split("T")[0],
-    links: "https://codeant-ai-plum.vercel.app/",
-    tags: "Solidity, React, Next.JS, Javascript, Etherlink",
+    links: "",
+    tags: "",
   });
 
   const [projectImages, setProjectImages] = useState([]);
@@ -43,28 +43,15 @@ const ProjectForm = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md">
+    <div className="max-w-4xl mx-auto p-6 bg-gray-100 rounded-lg shadow-md text-black mt-10 dark:bg-black dark:text-white">
       <h2 className="text-2xl font-bold mb-6">Project Details</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 text-white dark:shadow-2xl"
+      >
         {/* Project Name */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="projectName"
@@ -73,7 +60,7 @@ const ProjectForm = () => {
               projectName
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">Text</div>
+
           <div className="flex-grow">
             <input
               type="text"
@@ -88,22 +75,6 @@ const ProjectForm = () => {
 
         {/* Project Description */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="projectDescription"
@@ -112,7 +83,7 @@ const ProjectForm = () => {
               projectDescription
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">Text</div>
+
           <div className="flex-grow">
             <textarea
               id="projectDescription"
@@ -127,22 +98,6 @@ const ProjectForm = () => {
 
         {/* Project Images */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="projectImages"
@@ -151,7 +106,7 @@ const ProjectForm = () => {
               ProjectImages
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">File</div>
+
           <div className="flex-grow">
             <div className="flex items-center">
               <input
@@ -162,7 +117,7 @@ const ProjectForm = () => {
                 onChange={handleProjectImagesChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
-              <div className="ml-2 text-yellow-500">
+              <div className="ml-2 text-black dark:text-white">
                 {projectImages.length > 0
                   ? `${projectImages.length} files`
                   : "Select files"}
@@ -173,22 +128,6 @@ const ProjectForm = () => {
 
         {/* GitHub Link */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="githubLink"
@@ -197,7 +136,7 @@ const ProjectForm = () => {
               githubLink
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">Text</div>
+
           <div className="flex-grow">
             <input
               type="url"
@@ -212,22 +151,6 @@ const ProjectForm = () => {
 
         {/* Date */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="date"
@@ -236,7 +159,7 @@ const ProjectForm = () => {
               date
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">Text</div>
+
           <div className="flex-grow">
             <input
               type="date"
@@ -251,22 +174,6 @@ const ProjectForm = () => {
 
         {/* Links */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="links"
@@ -275,7 +182,7 @@ const ProjectForm = () => {
               links
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">Text</div>
+
           <div className="flex-grow">
             <input
               type="url"
@@ -290,22 +197,6 @@ const ProjectForm = () => {
 
         {/* Main Image */}
         <div className="flex items-center">
-          <div className="w-8 h-8 mr-4 flex-shrink-0">
-            <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-4 w-4 text-gray-700"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </div>
-          </div>
           <div className="w-1/4">
             <label
               htmlFor="mainImage"
@@ -314,7 +205,7 @@ const ProjectForm = () => {
               mainImage
             </label>
           </div>
-          <div className="w-1/4 text-sm text-gray-500">File</div>
+
           <div className="flex-grow">
             <input
               type="file"
@@ -330,22 +221,6 @@ const ProjectForm = () => {
 
           {/* Tags */}
           <div className="flex items-center">
-            <div className="w-8 h-8 mr-4 flex-shrink-0">
-              <div className="w-6 h-6 border border-gray-400 rounded flex items-center justify-center bg-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-4 w-4 text-gray-700"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-            </div>
             <div className="w-1/4">
               <label htmlFor="tags" className="block">
                 Tags
@@ -354,6 +229,10 @@ const ProjectForm = () => {
           </div>
         </div>
       </form>
+
+      <button className="px-5 py-2 dark:bg-white bg-black dark:text-black rounded-xl">
+        Submit
+      </button>
     </div>
   );
 };
