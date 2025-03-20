@@ -12,7 +12,7 @@ const Admin = () => {
 
   const handleAuth = async () => {
     try {
-      const res = await fetch(`${process.env.API}/authenticate`, {
+      const res = await fetch(`${process.env.API}/userlogin`, {
         method: "POST",
         body: JSON.stringify(details),
         headers: {
@@ -22,7 +22,12 @@ const Admin = () => {
 
       if (!res.ok) {
         console.log("Can't authenticate the user");
+        return;
       }
+
+      console.log("can't authenticate");
+
+      router.push("/Admin/ProjectMenu");
     } catch (error) {
       console.log("there is some problem with the user");
     }
@@ -39,7 +44,7 @@ const Admin = () => {
     handleAuth();
     // window.location.href = "./Admin/UploadProject";
     // router.push("/Admin/UploadProject");
-    router.push("/Admin/ProjectMenu");
+    // router.push("/Admin/ProjectMenu");
   };
 
   return (

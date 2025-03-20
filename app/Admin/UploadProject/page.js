@@ -230,7 +230,7 @@ const ProjectForm = () => {
         </div>
       </form>
 
-      <button className="px-5 py-2 dark:bg-white bg-black dark:text-black rounded-xl">
+      <button className="px-5 py-2 dark:bg-white text-white bg-black dark:text-black rounded-xl">
         Submit
       </button>
     </div>
