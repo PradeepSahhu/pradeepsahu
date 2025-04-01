@@ -11,17 +11,21 @@ const Admin = () => {
   });
 
   const handleAuth = async () => {
+    console.log("login button clicked");
+    console.log(details);
     try {
-      const res = await fetch(`${process.env.API}/userlogin`, {
+      // const res = await fetch(`${process.env.API}userlogin`, {
+      const res = await fetch("http://localhost:8000/userlogin", {
         method: "POST",
         body: JSON.stringify(details),
         headers: {
-          "Content-Type": "applicaiton/json",
+          "Content-Type": "application/json",
         },
       });
 
       if (!res.ok) {
         console.log("Can't authenticate the user");
+        console.log;
         return;
       }
 
