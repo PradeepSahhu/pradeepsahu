@@ -14,8 +14,8 @@ const Admin = () => {
     console.log("login button clicked");
     console.log(details);
     try {
-      // const res = await fetch(`${process.env.API}userlogin`, {
-      const res = await fetch("http://localhost:8000/userlogin", {
+      const res = await fetch(`${process.env.API}userlogin`, {
+        // const res = await fetch("http://localhost:8000/userlogin", {
         method: "POST",
         body: JSON.stringify(details),
         headers: {
