@@ -2,44 +2,85 @@
 import React, { useState } from "react";
 
 const ProjectForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setformData] = useState({
     projectName: "",
     projectDescription: "",
     githubLink: "",
     date: new Date().toISOString().split("T")[0],
     links: "",
     tags: "",
+    projectImages: [],
+    mainImage: null,
   });
-
-  const [projectImages, setProjectImages] = useState([]);
-  const [mainImage, setMainImage] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
+    setformData({
       ...formData,
       [name]: value,
     });
   };
 
-  const handleProjectImagesChange = (e) => {
-    if (e.target.files) {
-      setProjectImages(Array.from(e.target.files));
-    }
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setformData((prev) => ({
+      ...prev,
+      [name]: name === "mainImage" ? files[0] : Array.from(files),
+    }));
   };
 
-  const handleMainImageChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setMainImage(e.target.files[0]);
-    }
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    // merging not working
     e.preventDefault();
     console.log("Form data:", formData);
     console.log("Project images:", projectImages);
     console.log("Main image:", mainImage);
-    // Here you would typically send the data to your backend
+
+    const data = new FormData();
+
+    // Append text fields
+    Object.keys(formData).forEach((key) => {
+      if (key !== "projectImages" && key !== "mainImage") {
+        data.append(key, formData[key]);
+      }
+    });
+
+    // Ensure projectImages is always an array
+    if (formData.projectImages && formData.projectImages.length > 0) {
+      formData.projectImages.forEach((file) => {
+        data.append("ProjectImages", file);
+      });
+    } else {
+      data.append("ProjectImages", ""); // Handle empty case
+    }
+
+    // Append main image
+    if (formData.mainImage) {
+      data.append("mainImage", formData.mainImage);
+    }
+    // for (let [key, value] of data.entries()) {
+    //   console.log(`${key} : `, value);
+    // }
+    // for (let [key, value] of data.entries()) {
+    //   console.log(`${key}:`, value);
+    // }
+
+    try {
+      const res = await fetch(`${process.env.API}addNewProject`, {
+        // const res = await fetch(`http://localhost:8000/addNewProject`, {
+        method: "POST",
+        credentials: "include",
+        body: data, // No need to set Content-Type
+      });
+
+      if (!res.ok) {
+        console.error("Error adding project");
+      } else {
+        console.log("Project added successfully");
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+    }
   };
 
   return (
@@ -114,12 +155,12 @@ const ProjectForm = () => {
                 id="projectImages"
                 name="projectImages"
                 multiple
-                onChange={handleProjectImagesChange}
+                onChange={handleFileChange}
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
               <div className="ml-2 text-black dark:text-white">
-                {projectImages.length > 0
-                  ? `${projectImages.length} files`
+                {formData.projectImages.length > 0
+                  ? `${formData.projectImages.length} files`
                   : "Select files"}
               </div>
             </div>
@@ -211,26 +252,41 @@ const ProjectForm = () => {
               type="file"
               id="mainImage"
               name="mainImage"
-              onChange={handleMainImageChange}
+              onChange={handleFileChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
             />
             <div className="mt-1 text-sm text-gray-500">
-              {mainImage ? mainImage.name : "Select files"}
+              {formData.mainImage ? formData.mainImage.name : "Select files"}
             </div>
           </div>
+        </div>
+        {/* Tags */}
+        <div className="flex items-center">
+          <div className="w-1/4">
+            <label
+              htmlFor="tags"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Tags
+            </label>
+          </div>
 
-          {/* Tags */}
-          <div className="flex items-center">
-            <div className="w-1/4">
-              <label htmlFor="tags" className="block">
-                Tags
-              </label>
-            </div>
+          <div className="flex-grow">
+            <input
+              type="text"
+              id="tags"
+              name="tags"
+              onChange={handleInputChange}
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+            />
           </div>
         </div>
       </form>
 
-      <button className="px-5 py-2 dark:bg-white text-white bg-black dark:text-black rounded-xl">
+      <button
+        className="px-5 py-2 dark:bg-[#86de22] font-bold text-white  dark:text-black rounded-xl bg-[#86de22]"
+        onClick={handleSubmit}
+      >
         Submit
       </button>
     </div>

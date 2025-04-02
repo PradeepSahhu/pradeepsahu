@@ -10,6 +10,8 @@ const Admin = () => {
     password: "",
   });
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
   const handleAuth = async () => {
     console.log("login button clicked");
     console.log(details);
@@ -17,11 +19,15 @@ const Admin = () => {
       const res = await fetch(`${process.env.API}userlogin`, {
         // const res = await fetch("http://localhost:8000/userlogin", {
         method: "POST",
+        credentials: "include",
         body: JSON.stringify(details),
         headers: {
           "Content-Type": "application/json",
         },
       });
+
+      console.log("This is the authentication page");
+      console.log(res);
 
       if (!res.ok) {
         console.log("Can't authenticate the user");
