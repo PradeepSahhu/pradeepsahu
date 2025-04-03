@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Card from "../components/CardComponent/Card";
 import NavigationBar from "../components/Navigation/NavigationBar";
 import ProjectLoading from "../components/Loaders/ProjectLoading";
-import EarthWithSatellites from "../components/Loaders/EarthLoading";
 
 export default function Project() {
   const [apiData, setApiData] = useState([]);
