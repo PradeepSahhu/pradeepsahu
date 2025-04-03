@@ -33,6 +33,12 @@ export default function Project() {
       {/* <div className="">
         <button className="bg-slate-700 px-5 py-2">Sort by Name </button>
       </div> */}
+
+      <div className="dark:text-white ml-24 my-10 w-full">
+        <button className="dark:bg-green-500 text-2xl bg-green-500 rounded-xl px-8 py-2">
+          Filter
+        </button>
+      </div>
       <div className="bg-white text-black dark:bg-black dark:text-white flex flex-wrap mx-10 my-10 ml-24">
         {loading ? (
           <ProjectLoading />

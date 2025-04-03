@@ -42,7 +42,7 @@ export default function Home() {
               </Link>
             </div>
             <div className="py-5 ">
-              <Link href="" className="font-extralight   ">
+              <Link href="./Contact" className="font-extralight   ">
                 Contact
               </Link>
             </div>
