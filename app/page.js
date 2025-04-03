@@ -31,6 +31,11 @@ export default function Home() {
             <div className="py-5 ">
               <button className=" font-extralight   ">Home</button>
             </div>
+            <div className="py-5 ">
+              <button className=" font-extralight   ">
+                <Link href="/techStacks">Tech Stack</Link>
+              </button>
+            </div>
             <div className="py-5 cursor">
               <Link className="font-extralight" href="/Projects">
                 Projects
