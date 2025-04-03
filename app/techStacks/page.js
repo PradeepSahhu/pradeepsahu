@@ -1,3 +1,7 @@
+"use client";
+import * as motion from "motion/react-client";
+import { useState } from "react";
+
 const TechStack = () => {
   const skills = [
     {
@@ -193,20 +197,178 @@ const TechStack = () => {
       icon: "https://img.icons8.com/external-tal-revivo-shadow-tal-revivo/48/000000/external-rust-is-a-multi-paradigm-system-programming-language-logo-shadow-tal-revivo.png",
     },
   ];
+  const certifications = [
+    {
+      name: "Blockchain Development",
+      provider: "Metacrafters",
+      date: "Summer 2024",
+      description:
+        "Completed a summer programme on Blockchain Development, gaining knowledge in smart contracts and decentralized applications.",
+      certificateLink: "https://drive.google.com/your-certificate-link-1",
+    },
+    {
+      name: "UAV Technology Workshop",
+      provider: "Chandigarh University",
+      date: "October 18, 2024",
+      description:
+        "Learned about aerodynamics, lift, thrust, and drag forces, and assembled components of a QuadCopter, including B-DC motors, propellers, and motor controllers.",
+      certificateLink: "https://drive.google.com/your-certificate-link-2",
+    },
+    {
+      name: "Spring Boot & Microservices",
+      provider: "Self-Learning",
+      date: "2025",
+      description:
+        "Gained expertise in Spring Boot, Hibernate, JPA, dependency injection, and microservices architecture, including OAuth2 authentication and load balancing.",
+      certificateLink: "https://drive.google.com/your-certificate-link-3",
+    },
+    {
+      name: "AI/ML Fundamentals",
+      provider: "Self-Learning",
+      date: "2025",
+      description:
+        "Explored regression and classification techniques, including linear regression, decision trees, and XGBoost for wind and solar power prediction models.",
+      certificateLink: "https://drive.google.com/your-certificate-link-4",
+    },
+    {
+      name: "Full Stack Web Development",
+      provider: "Self-Learning",
+      date: "Ongoing",
+      description:
+        "Developed applications using Next.js, React, Express.js, and PostgreSQL, with hands-on experience in UI/UX design, authentication, and deployment.",
+      certificateLink: "https://drive.google.com/your-certificate-link-5",
+    },
+    {
+      name: "JSP & Servlets",
+      provider: "Self-Learning",
+      date: "January 2025",
+      description:
+        "Implemented a login web page using JSP, Servlets, PostgreSQL, and JSTL, enhancing frontend-backend integration.",
+      certificateLink: "https://drive.google.com/your-certificate-link-6",
+    },
+    {
+      name: "Docker & Containerization",
+      provider: "Self-Learning",
+      date: "2024",
+      description:
+        "Learned about Docker, containerized applications, and managed deployments using Docker Compose.",
+      certificateLink: "https://drive.google.com/your-certificate-link-7",
+    },
+    {
+      name: "Machine Learning with Python",
+      provider: "Coursera",
+      date: "2025",
+      description:
+        "Completed a Coursera course on Machine Learning, covering supervised and unsupervised learning techniques.",
+      certificateLink: "https://www.coursera.org/your-certificate-link",
+    },
+    {
+      name: "Spring Framework for Beginners",
+      provider: "Udemy",
+      date: "2025",
+      description:
+        "Completed an Udemy course on Spring Framework, covering dependency injection, Spring Boot, and RESTful API development.",
+      certificateLink: "https://www.udemy.com/your-certificate-link",
+    },
+    {
+      name: "React - The Complete Guide",
+      provider: "Udemy",
+      date: "2025",
+      description:
+        "Learned React fundamentals, hooks, state management, and Next.js integration through a Udemy course.",
+      certificateLink: "https://www.udemy.com/your-certificate-link-2",
+    },
+  ];
+
+  const containerVariants = {
+    hidden: {
+      opacity: 1,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.03,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.09,
+      },
+    },
+  };
   return (
-    <section className="py-12 bg-white text-center text-red-500">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6">My Skills</h2>
-      <div className="flex flex-wrap justify-center gap-6 ">
+    <section className="py-12 bg-white text-center dark:bg-black dark:text-white">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6 dark:text-white">
+        My Skills
+      </h2>
+      <motion.div
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // transition={{ duration: 2, type: "spring" }}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className="flex flex-wrap justify-center gap-6 "
+      >
         {skills.map((skill, index) => (
-          <div
-            key={index}
-            className=" text-white shadow-lg rounded-xl p-4 w-32 h-32 flex flex-col items-center justify-center bg-white"
-          >
-            <img src={skill.icon} alt={skill.name} width={50} height={50} />
-            <p className="mt-2 text-gray-700 font-semibold">{skill.name}</p>
+          <div>
+            <motion.div
+              // initial={{ height: 1 }}
+              // animate={{ height: 130 }}
+              // transition={{ duration: 2, type: "keyframes" }}
+              variants={itemVariants}
+              key={index}
+              className=" text-white shadow-lg rounded-xl p-4 w-32 h-32 flex flex-col items-center justify-center bg-white dark:text-white dark:bg-black"
+            >
+              <img src={skill.icon} alt={skill.name} width={50} height={50} />
+              <p className="mt-2 text-gray-700 font-bold dark:text-white">
+                {skill.name}
+              </p>
+            </motion.div>
           </div>
         ))}
-      </div>
+      </motion.div>
+
+      <motion.div className="flex flex-col items-center w-full px-4">
+        <div className="font-bold text-3xl my-10 text-center">
+          Certifications
+        </div>
+        {certifications.map((cert, index) => (
+          <motion.div
+            key={index}
+            initial={{ x: 200, y: 100, opacity: 0 }}
+            animate={{ x: 0, y: 0, opacity: 1 }}
+            transition={{ delay: index * 0.2, duration: 0.5 }}
+            className="w-full md:w-10/12 my-4 flex flex-wrap md:flex-nowrap gap-4 md:gap-x-10 mx-auto rounded-xl px-6 py-4 shadow-xl justify-between items-center dark:bg-[#213555] bg-[#6096B4] text-black dark:text-white"
+          >
+            <div className="flex-1 min-w-[150px] text-center md:text-left">
+              <p className="font-semibold">{cert.name}</p>
+            </div>
+            <div className="flex-1 min-w-[150px] text-center md:text-left">
+              <p className="text-sm text-gray-300">{cert.provider}</p>
+            </div>
+            <div className="min-w-[100px] text-center md:text-left">
+              <p className="text-xs text-gray-400">{cert.date}</p>
+            </div>
+
+            <a
+              href={cert.certificateLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white px-6 py-2 rounded-xl bg-green-500 text-sm mt-2 md:mt-0 inline-block transition hover:bg-green-600"
+            >
+              View Certificate
+            </a>
+          </motion.div>
+        ))}
+      </motion.div>
     </section>
   );
 };
