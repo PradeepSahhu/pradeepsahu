@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import "./loadingstyle.css";
+
+const Loading = () => {
+  return (
+    <div className={`container`}>
+      <div className={`box `}></div>
+    </div>
+  );
+};
 
 const Admin = () => {
   const router = useRouter();
@@ -11,6 +20,15 @@ const Admin = () => {
   });
 
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedInMessage, setLoggedInMessage] = useState("");
+
+  const Message = () => {
+    return (
+      <div className="my-2">
+        <p className="text-red-600 ">{loggedInMessage}</p>
+      </div>
+    );
+  };
 
   const handleAuth = async () => {
     console.log("login button clicked");
@@ -31,7 +49,7 @@ const Admin = () => {
 
       if (!res.ok) {
         console.log("Can't authenticate the user");
-        console.log;
+        setLoggedInMessage("Please Enter correct username or password");
         return;
       }
 
@@ -49,9 +67,12 @@ const Admin = () => {
     setDetails((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    setLoggedInMessage("");
     console.log("the handle click is ");
-    handleAuth();
+    setLoggedIn(true);
+    await handleAuth();
+    setLoggedIn(false);
     // window.location.href = "./Admin/UploadProject";
     // router.push("/Admin/UploadProject");
     // router.push("/Admin/ProjectMenu");
@@ -60,6 +81,7 @@ const Admin = () => {
   return (
     <>
       <div className="bg-white dark:bg-black flex backdrop: w-full text-black h-[100vh] justify-center align-middle text-center items-center">
+        {loggedIn && <Loading />}
         {/* // the form starts here */}
         <div className="bg-white dark:bg-black px-10 py-5 text-white">
           <div className="flex gap-10 px-5 py-2 ">
@@ -91,6 +113,8 @@ const Admin = () => {
               Submit
             </button>
           </div>
+
+          {<Message />}
         </div>
       </div>
     </>
