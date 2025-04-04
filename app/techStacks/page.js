@@ -283,10 +283,11 @@ const TechStack = () => {
 
   const containerVariants = {
     hidden: {
-      opacity: 1,
+      opacity: 0,
     },
     show: {
       opacity: 1,
+
       transition: {
         staggerChildren: 0.03,
       },
@@ -299,6 +300,7 @@ const TechStack = () => {
     },
     show: {
       opacity: 1,
+
       transition: {
         duration: 0.09,
       },
