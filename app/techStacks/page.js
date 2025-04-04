@@ -1,5 +1,6 @@
 "use client";
 import * as motion from "motion/react-client";
+import Link from "next/link";
 import { useState } from "react";
 
 const TechStack = () => {
@@ -304,72 +305,80 @@ const TechStack = () => {
     },
   };
   return (
-    <section className="py-12 bg-white text-center dark:bg-black dark:text-white">
-      <h2 className="text-3xl font-bold text-gray-800 mb-6 dark:text-white">
-        My Skills
-      </h2>
-      <motion.div
-        // initial={{ opacity: 0 }}
-        // animate={{ opacity: 1 }}
-        // transition={{ duration: 2, type: "spring" }}
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        className="flex flex-wrap justify-center gap-6 "
+    <div>
+      <Link
+        href="./"
+        className="px-5 py-5 bg-orange-600 rounded-xl my-10 mx-10"
       >
-        {skills.map((skill, index) => (
-          <div>
-            <motion.div
-              // initial={{ height: 1 }}
-              // animate={{ height: 130 }}
-              // transition={{ duration: 2, type: "keyframes" }}
-              variants={itemVariants}
-              key={index}
-              className=" text-white shadow-lg rounded-xl p-4 w-32 h-32 flex flex-col items-center justify-center bg-white dark:text-white dark:bg-black"
-            >
-              <img src={skill.icon} alt={skill.name} width={50} height={50} />
-              <p className="mt-2 text-gray-700 font-bold dark:text-white">
-                {skill.name}
-              </p>
-            </motion.div>
+        Back
+      </Link>
+      <section className="py-12 bg-white text-center dark:bg-black dark:text-white">
+        <h2 className="text-3xl font-bold text-gray-800 mb-6 dark:text-white">
+          My Skills
+        </h2>
+        <motion.div
+          // initial={{ opacity: 0 }}
+          // animate={{ opacity: 1 }}
+          // transition={{ duration: 2, type: "spring" }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="flex flex-wrap justify-center gap-6 "
+        >
+          {skills.map((skill, index) => (
+            <div>
+              <motion.div
+                // initial={{ height: 1 }}
+                // animate={{ height: 130 }}
+                // transition={{ duration: 2, type: "keyframes" }}
+                variants={itemVariants}
+                key={index}
+                className=" text-white shadow-lg rounded-xl p-4 w-32 h-32 flex flex-col items-center justify-center bg-white dark:text-white dark:bg-black"
+              >
+                <img src={skill.icon} alt={skill.name} width={50} height={50} />
+                <p className="mt-2 text-gray-700 font-bold dark:text-white">
+                  {skill.name}
+                </p>
+              </motion.div>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div className="flex flex-col items-center w-full px-4">
+          <div className="font-bold text-3xl my-10 text-center">
+            Certifications
           </div>
-        ))}
-      </motion.div>
-
-      <motion.div className="flex flex-col items-center w-full px-4">
-        <div className="font-bold text-3xl my-10 text-center">
-          Certifications
-        </div>
-        {certifications.map((cert, index) => (
-          <motion.div
-            key={index}
-            initial={{ x: 200, y: 100, opacity: 0 }}
-            animate={{ x: 0, y: 0, opacity: 1 }}
-            transition={{ delay: index * 0.2, duration: 0.5 }}
-            className="w-full md:w-10/12 my-4 flex flex-wrap md:flex-nowrap gap-4 md:gap-x-10 mx-auto rounded-xl px-6 py-4 shadow-xl justify-between items-center dark:bg-[#213555] bg-[#6096B4] text-black dark:text-white"
-          >
-            <div className="flex-1 min-w-[150px] text-center md:text-left">
-              <p className="font-semibold">{cert.name}</p>
-            </div>
-            <div className="flex-1 min-w-[150px] text-center md:text-left">
-              <p className="text-sm text-gray-300">{cert.provider}</p>
-            </div>
-            <div className="min-w-[100px] text-center md:text-left">
-              <p className="text-xs text-gray-400">{cert.date}</p>
-            </div>
-
-            <a
-              href={cert.certificateLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white px-6 py-2 rounded-xl bg-green-500 text-sm mt-2 md:mt-0 inline-block transition hover:bg-green-600"
+          {certifications.map((cert, index) => (
+            <motion.div
+              key={index}
+              initial={{ x: 200, y: 100, opacity: 0 }}
+              animate={{ x: 0, y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.2, duration: 0.5 }}
+              className="w-full md:w-10/12 my-4 flex flex-wrap md:flex-nowrap gap-4 md:gap-x-10 mx-auto rounded-xl px-6 py-4 shadow-xl justify-between items-center dark:bg-[#213555] bg-[#6096B4] text-black dark:text-white"
             >
-              View Certificate
-            </a>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
+              <div className="flex-1 min-w-[150px] text-center md:text-left">
+                <p className="font-semibold">{cert.name}</p>
+              </div>
+              <div className="flex-1 min-w-[150px] text-center md:text-left">
+                <p className="text-sm text-gray-300">{cert.provider}</p>
+              </div>
+              <div className="min-w-[100px] text-center md:text-left">
+                <p className="text-xs text-gray-400">{cert.date}</p>
+              </div>
+
+              <a
+                href={cert.certificateLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white px-6 py-2 rounded-xl bg-green-500 text-sm mt-2 md:mt-0 inline-block transition hover:bg-green-600"
+              >
+                View Certificate
+              </a>
+            </motion.div>
+          ))}
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

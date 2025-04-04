@@ -5,6 +5,29 @@ import ProjectItem from "./components/components/Home/Project";
 import Link from "next/link";
 
 export default function Home() {
+  const Navigation = [
+    {
+      name: "Home",
+      route: "./",
+    },
+    {
+      name: "Tech Stack",
+      route: "./techStacks",
+    },
+    {
+      name: "Projects",
+      route: "./Projects",
+    },
+
+    {
+      name: "Achievement and Awards",
+      route: "./Achievement",
+    },
+    {
+      name: "Contact",
+      route: "./Contact",
+    },
+  ];
   return (
     <div className=" h-screen bg-white dark:bg-black">
       <div className="h-screen w-screen bg-white dark:bg-black">
@@ -18,7 +41,7 @@ export default function Home() {
 
         <div className="fixed  py-5  top-0 left-0 w-screen z-10 bg-transparent ">
           <div
-            className={`flex gap-x-52 justify-center overflow-hidden transition-all duration-500 `}
+            className={`flex gap-x-20 justify-center overflow-hidden transition-all duration-500 `}
           >
             <div className="py-5 ">
               <Link
@@ -28,15 +51,23 @@ export default function Home() {
                 Pradeep Sahu
               </Link>
             </div>
-            <div className="py-5 ">
+            {/* <div className="py-5 ">
               <button className=" font-extralight   ">Home</button>
-            </div>
-            <div className="py-5 ">
+            </div> */}
+
+            {Navigation.map((navigate) => (
+              <div className="py-5 ">
+                <button className=" font-extralight   ">
+                  <Link href={`${navigate.route}`}>{`${navigate.name}`}</Link>
+                </button>
+              </div>
+            ))}
+            {/* <div className="py-5 ">
               <button className=" font-extralight   ">
                 <Link href="/techStacks">Tech Stack</Link>
               </button>
-            </div>
-            <div className="py-5 cursor">
+            </div> */}
+            {/* <div className="py-5 cursor">
               <Link className="font-extralight" href="/Projects">
                 Projects
               </Link>
@@ -45,7 +76,7 @@ export default function Home() {
               <Link href="./Contact" className="font-extralight   ">
                 Contact
               </Link>
-            </div>
+            </div> */}
           </div>
           <div className="flex justify-center items-center align-middle">
             <hr className="border-1 border-white w-10/12 opacity-40" />
