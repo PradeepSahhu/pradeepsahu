@@ -27,17 +27,18 @@ export default function Project() {
   }, []);
 
   return (
-    <div className="flex">
+    <div className="">
       <NavigationBar />
 
       {/* <div className="">
         <button className="bg-slate-700 px-5 py-2">Sort by Name </button>
       </div> */}
 
-      <div className="dark:text-white ml-24 my-10 w-full">
-        <button className="dark:bg-green-500 text-2xl bg-green-500 rounded-xl px-8 py-2">
+      <div className="dark:text-white ml-24 m-10 flex  gap-x-10">
+        <button className="dark:bg-yellow-500 text-lg rounded-xl px-8 py-2">
           Filter
         </button>
+        <input className="bg-white text-lg rounded-xl px-8 py-2 text-black" />
       </div>
       <div className="bg-white text-black dark:bg-black dark:text-white flex flex-wrap mx-10 my-10 ml-24">
         {loading ? (

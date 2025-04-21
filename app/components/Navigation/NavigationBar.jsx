@@ -17,24 +17,13 @@ export default function NavigationBar() {
       >
         <FaHome size={24} /> <span className="text-xs">Home</span>
       </Link>
-      <a
-        href="#"
-        className="my-4 p-2 flex flex-col items-center space-y-2 hover:bg-gray-700 rounded"
-      >
-        <FaProjectDiagram size={24} /> <span className="text-xs">Projects</span>
-      </a>
-      <a
-        href="#"
-        className="my-4 p-2 flex flex-col items-center space-y-2 hover:bg-gray-700 rounded"
-      >
-        <FaInfoCircle size={24} /> <span className="text-xs">About</span>
-      </a>
-      <a
-        href="#"
+
+      <Link
+        href="./Contact"
         className="my-4 p-2 flex flex-col items-center space-y-2 hover:bg-gray-700 rounded"
       >
         <FaEnvelope size={24} /> <span className="text-xs">Contact</span>
-      </a>
+      </Link>
       <div className="mt-auto">
         <ThemeSwitcher />
       </div>
