@@ -35,7 +35,7 @@ export default function Project() {
       </div> */}
 
       <div className="dark:text-white ml-24 m-10 flex  gap-x-10">
-        <button className="dark:bg-yellow-500 text-lg rounded-xl px-8 py-2">
+        <button className="dark:bg-orange-600 text-lg rounded-xl px-8 py-2">
           Filter
         </button>
       </div>
