@@ -38,7 +38,6 @@ export default function Project() {
         <button className="dark:bg-yellow-500 text-lg rounded-xl px-8 py-2">
           Filter
         </button>
-        <input className="bg-white text-lg rounded-xl px-8 py-2 text-black" />
       </div>
       <div className="bg-white text-black dark:bg-black dark:text-white flex flex-wrap mx-10 my-10 ml-24">
         {loading ? (
