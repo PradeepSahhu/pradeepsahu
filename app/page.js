@@ -1,231 +1,152 @@
 "use client";
-import { useState } from "react";
-import { useEffect } from "react";
-import ProjectItem from "./components/components/Home/Project";
+
+import Heading from "@/components/Heading/Heading.jsx";
 import Link from "next/link";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const Navigation = [
-    {
-      name: "Home",
-      route: "./",
-    },
-    {
-      name: "Tech Stack",
-      route: "./techStacks",
-    },
-    {
-      name: "Projects",
-      route: "./Projects",
-    },
-    {
-      name: "Achievement and Awards",
-      route: "./Achievement",
-    },
-    {
-      name: "Contact",
-      route: "./Contact",
-    },
-  ];
-
-  const containerVariants = {
-    hide: {
-      x: 0,
-      y: -100,
-    },
-    show: {
-      x: 0,
-      y: 0,
-      transition: {
-        staggerChildren: 0.3,
-      },
-    },
-  };
-
-  const childVariants = {
-    hide: {
-      x: 0,
-      y: -200,
-    },
-    show: {
-      x: 0,
-      y: 0,
-      transition: {
-        duration: 1,
-      },
-    },
-  };
-
-  const headingVariant = {
-    hide: {
-      opacity: 0,
-      x: 0,
-      y: -200,
-    },
-    show: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      transition: {
-        duration: 1,
-        delay: 1,
-      },
-    },
-  };
-
-  const mobileMenuVariants = {
-    closed: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-      },
-    },
-    open: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.3,
-      },
-    },
-  };
+  const [showOptions, setShowOptions] = useState(false);
 
   return (
-    <div className="h-screen bg-white dark:bg-black">
-      <div className="h-screen w-screen bg-white dark:bg-black">
-        <div className="relative h-screen w-screen z-0">
-          <img
-            className="absolute inset-0 h-full w-screen object-cover brightness-50"
-            src="./Home/sc2.jpeg"
-            alt="Background"
-          />
+    <div>
+      <div className={`grid grid-cols-4 bg-black text-white z-0`}>
+        <div className="col-start-2 col-span-2 mt-8">
+          <Heading />
+        </div>
+      </div>
+
+      {showOptions && (
+        <div
+          className={`absolute z-10 w-10/12 ${
+            showOptions ? "backdrop-blur-sm" : ""
+          }`}
+        >
+          <div className="relative w-[600px] h-[900px] mx-auto my-2">
+            <div className="absolute transform translate-x-[400px] translate-y-[280px]">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-green-600 px-3 py-2 rounded-xl shadow-md"
+              >
+                View Profile
+              </motion.button>
+            </div>
+
+            <div className="absolute transform translate-x-[450px] translate-y-[350px]">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-blue-600 px-3 py-2 rounded-xl shadow-md"
+              >
+                View Projects
+              </motion.button>
+            </div>
+
+            <div className="absolute transform translate-x-[500px] translate-y-[220px]">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-red-600 px-3 py-2 rounded-xl shadow-md"
+              >
+                View Certifications
+              </motion.button>
+            </div>
+
+            <div className="absolute transform translate-x-[650px] translate-y-[290px]">
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 10 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-black px-3 py-2 rounded-xl shadow-md text-5xl"
+                onClick={() => setShowOptions(!showOptions)}
+              >
+                X
+              </motion.button>
+            </div>
+
+            <div className="absolute transform translate-x-[600px] translate-y-[400px]">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-orange-600 px-3 py-2 rounded-xl shadow-md"
+              >
+                Contact Me
+              </motion.button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="mt-16">
+        <div
+          className={`grid grid-cols-4 bg-black text-white z-0 ${
+            showOptions ? "backdrop-blur-3xl" : ""
+          }`}
+        >
+          <div className="col-start-2 col-span-2 mt-16">
+            <div>
+              <p className="font-bold text-xl">
+                Hi, my name is{" "}
+                <span className="text-blue-600">Pradeep Sahu.</span>
+                <p className="from-blue-600 to-green-600 bg-clip-text text-transparent bg-gradient-to-br">
+                  プラディープ・サフ
+                </p>
+              </p>
+
+              <p>
+                I m a final-year Computer Science Engineering student with a
+                deep passion for technology, coding, and solving real-world
+                problems through impactful software.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid col-start-2 col-span-2">
+            <div className="flex">
+              <div className="pt-10">
+                <p>
+                  I love working on challenging projects that blend creativity
+                  with logic—from backend systems and automation to user-focused
+                  features.
+                </p>
+              </div>
+
+              <div>
+                <img
+                  className="w-60 cursor-pointer"
+                  src="./photo.jpeg"
+                  onClick={() => setShowOptions(!showOptions)}
+                />
+                <div>
+                  <p className="text-gray-500 text-[10px]">
+                    click on the photo to View
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col-start-2 col-span-2 mt-16">
+            <div>
+              <p>
+                I m constantly learning and building, with a focus on clean
+                code, efficient systems, and meaningful digital experiences.
+              </p>
+            </div>
+          </div>
         </div>
 
-        <motion.div
-          className="fixed py-3 md:py-5 top-0 left-0 w-screen z-10 bg-transparent"
-          variants={containerVariants}
-          initial="hide"
-          animate="show"
-        >
-          <div className="flex justify-between items-center px-4 md:px-8 lg:justify-center lg:gap-x-20">
-            <div className="py-2 md:py-5">
-              <Link
-                href="./Admin"
-                className="font-extrabold text-lg md:text-xl lg:text-2xl"
-              >
-                Pradeep Sahu
-              </Link>
-            </div>
-
-            {/* Hamburger menu for mobile */}
-            <div className="lg:hidden">
-              <button
-                onClick={toggleMenu}
-                className="text-white focus:outline-none"
-              >
-                {isMenuOpen ? (
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
-                  </svg>
-                ) : (
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    ></path>
-                  </svg>
-                )}
-              </button>
-            </div>
-
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex lg:gap-x-20">
-              {Navigation.map((navigate, index) => (
-                <motion.div
-                  key={index}
-                  className="py-5"
-                  variants={childVariants}
-                >
-                  <button className="font-extralight">
-                    <Link href={navigate.route}>{navigate.name}</Link>
-                  </button>
-                </motion.div>
-              ))}
+        <div className="grid grid-cols-4 mt-10">
+          <div className="col-start-2 col-end-3">
+            <p className="font-bold">Contact me : </p>
+            <div className="flex flex-col">
+              <span className="text-blue-600">
+                official.pradeepsahu@gmail.com
+              </span>
+              <span className="text-blue-600">+91-9599369647</span>
             </div>
           </div>
-
-          {/* Mobile Navigation Menu */}
-          <motion.div
-            className="lg:hidden w-full bg-black bg-opacity-70"
-            variants={mobileMenuVariants}
-            initial="closed"
-            animate={isMenuOpen ? "open" : "closed"}
-          >
-            {isMenuOpen && (
-              <div className="flex flex-col items-center py-2">
-                {Navigation.map((navigate, index) => (
-                  <div key={index} className="py-3 w-full text-center">
-                    <Link
-                      href={navigate.route}
-                      className="font-extralight text-lg block"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {navigate.name}
-                    </Link>
-                  </div>
-                ))}
-              </div>
-            )}
-          </motion.div>
-
-          <div className="flex justify-center items-center align-middle">
-            <hr className="border-1 border-white w-10/12 opacity-40" />
-          </div>
-        </motion.div>
-
-        <motion.div variants={containerVariants} initial="hide" animate="show">
-          <div className="absolute top-0 left-0 flex items-center justify-center h-screen w-screen px-4 md:px-8">
-            <div className="text-center">
-              <motion.div variants={headingVariant}>
-                <p className="font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-                  Creator Designer and Developer
-                </p>
-              </motion.div>
-
-              <div className="flex justify-center my-3 mt-6">
-                <button className="border-white border px-6 py-2 md:px-8 md:py-3 rounded-xl bg-transparent hover:scale-90 transition-all">
-                  <Link href="/Projects">Projects</Link>
-                </button>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );
