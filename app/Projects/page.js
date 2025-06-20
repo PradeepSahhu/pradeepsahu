@@ -58,6 +58,7 @@ export default function Project() {
             />
           ))
         )}
+        <p>This section is undermaintenance</p>
         {/* {[7].map(() => (
           // <Card goto={"./Projects/thisiduniqueid"} />
         ))} */}
