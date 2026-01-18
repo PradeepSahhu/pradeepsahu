@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FaTrophy,
   FaCalendarAlt,
@@ -10,195 +10,153 @@ import {
 } from "react-icons/fa";
 
 const Achievement = () => {
-  const certificates = [
+  const achievements = [
     {
       name: "IIT-BHU Technex",
       position: "3rd Position",
       offer: "Internship at NTPC",
-      date: "28 Feb - 2nd March",
-      link: "https://drive.google.com/file/d/181D_9egZWHWGUbnpgXD87jLbEpnaM4Xt/view?usp=sharing",
-      icon: "trophy",
+      date: "28 Feb – 2 March",
+      link: "https://drive.google.com/file/d/181D_9egZWHWGUbnpgXD87jLbEpnaM4Xt/view",
+      type: "trophy",
     },
     {
       name: "ICP Hackerhouse 48 Hour Hackathon",
-      position: "Top-10",
+      position: "Top 10",
       offer: "",
-      date: "20 Mar - 22 March",
+      date: "20 – 22 March",
       link: "",
-      icon: "medal",
+      type: "medal",
     },
     {
-      name: "code Rush competition",
-      position: "Top-4",
+      name: "Code Rush Competition",
+      position: "4th Place",
       offer: "",
       date: "23 Jan 2025",
-      link: "https://drive.google.com/file/d/1vxR48jhth5ObMNkOQGH7-pwtlYslh8wm/view?usp=sharing",
-      icon: "medal",
+      link: "https://drive.google.com/file/d/1vxR48jhth5ObMNkOQGH7-pwtlYslh8wm/view",
+      type: "medal",
     },
     {
       name: "Code Vista Hackathon",
       position: "Best Design Award",
       offer: "",
       date: "Sept 2023",
-      link: "https://drive.google.com/file/d/1QZEU3FwNX5KluR-sZGcHmVg7UPAgko1n/view?usp=sharing",
-      icon: "design",
+      link: "https://drive.google.com/file/d/1QZEU3FwNX5KluR-sZGcHmVg7UPAgko1n/view",
+      type: "design",
     },
   ];
 
-  const [expandedIndex, setExpandedIndex] = useState(null);
+  const [expanded, setExpanded] = useState(null);
 
-  // Function to get appropriate icon for each achievement
-  const getIcon = (iconType) => {
-    switch (iconType) {
-      case "trophy":
-        return <FaTrophy size={20} className="text-yellow-500" />;
-      case "medal":
-        return <FaMedal size={20} className="text-blue-500" />;
-      case "design":
-        return (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="text-purple-500"
-          >
-            <path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"></path>
-            <path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"></path>
-            <path d="M12 2v2"></path>
-            <path d="M12 22v-2"></path>
-            <path d="M20 12h-2"></path>
-            <path d="M4 12h2"></path>
-            <path d="M19.07 4.93l-1.41 1.41"></path>
-            <path d="M6.34 17.66l-1.41 1.41"></path>
-            <path d="M4.93 4.93l1.41 1.41"></path>
-            <path d="M17.66 17.66l1.41 1.41"></path>
-          </svg>
-        );
-      default:
-        return <FaTrophy size={20} className="text-yellow-500" />;
-    }
+  const iconMap = {
+    trophy: <FaTrophy className="text-yellow-500" />,
+    medal: <FaMedal className="text-blue-500" />,
+    design: <FaMedal className="text-purple-500" />,
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="p-4 md:p-8 max-w-4xl mx-auto"
-    >
-      <div className="flex items-center justify-between mb-8">
-        <motion.h2
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-2xl md:text-3xl font-bold text-gray-800 dark:text-white flex items-center"
-        >
-          <FaTrophy className="mr-3 text-yellow-500" />
+    <section className="max-w-5xl mx-auto px-4 py-16">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="mb-12 text-center"
+      >
+        <h2 className="text-3xl md:text-4xl font-bold flex justify-center items-center gap-3">
+          <FaTrophy className="text-yellow-500" />
           Achievements & Awards
-        </motion.h2>
-      </div>
+        </h2>
+        <p className="mt-3 text-gray-500 dark:text-gray-400">
+          Competitions, hackathons, and recognitions
+        </p>
+      </motion.div>
 
+      {/* List */}
       <div className="space-y-6">
-        {certificates.map((cert, index) => (
+        {achievements.map((item, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-            whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-            className="relative border border-gray-200 dark:border-gray-700 p-5 rounded-xl shadow-md bg-white dark:bg-gray-800 overflow-hidden"
-            onClick={() =>
-              setExpandedIndex(expandedIndex === index ? null : index)
-            }
+            initial={{ opacity: 0, y: 25 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1 }}
+            whileHover={{ scale: 1.015 }}
+            className="relative rounded-2xl border border-gray-200 dark:border-gray-700 
+                       bg-white dark:bg-gray-900 shadow-md overflow-hidden"
+            onClick={() => setExpanded(expanded === index ? null : index)}
           >
-            {/* Accent color line on the left */}
-            <div
-              className={`absolute left-0 top-0 bottom-0 w-1 ${
-                index === 0
-                  ? "bg-yellow-500"
-                  : index === 1
-                  ? "bg-blue-500"
-                  : "bg-purple-500"
-              }`}
-            />
+            {/* Accent bar */}
+            <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-yellow-500 via-blue-500 to-purple-500" />
 
-            <div className="flex flex-col md:flex-row md:items-center justify-between">
+            {/* Content */}
+            <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer">
+              {/* Left */}
               <div className="flex-1">
-                <div className="flex items-center mb-3">
-                  <div className="mr-3 p-2 bg-gray-100 dark:bg-gray-700 rounded-full">
-                    {getIcon(cert.icon)}
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 rounded-full bg-gray-100 dark:bg-gray-800">
+                    {iconMap[item.type]}
                   </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-gray-800 dark:text-white">
-                    {cert.name}
+                  <h3 className="text-lg md:text-xl font-semibold">
+                    {item.name}
                   </h3>
                 </div>
 
-                <div className="ml-12">
-                  <div className="flex items-center mb-2 text-gray-700 dark:text-gray-300">
-                    <FaMedal className="mr-2 text-blue-500" />
-                    <span className="font-medium">{cert.position}</span>
+                <div className="ml-11 space-y-1 text-sm">
+                  <div className="flex items-center gap-2 font-medium">
+                    <FaMedal className="text-blue-500" />
+                    {item.position}
                   </div>
 
-                  {cert.offer && (
-                    <div className="flex items-center mb-2 text-gray-700 dark:text-gray-300">
-                      <FaBriefcase className="mr-2 text-green-600" />
-                      <span>{cert.offer}</span>
+                  {item.offer && (
+                    <div className="flex items-center gap-2">
+                      <FaBriefcase className="text-green-500" />
+                      {item.offer}
                     </div>
                   )}
 
-                  <div className="flex items-center text-gray-600 dark:text-gray-400 text-sm">
-                    <FaCalendarAlt className="mr-2" />
-                    <span>{cert.date}</span>
+                  <div className="flex items-center gap-2 text-gray-500">
+                    <FaCalendarAlt />
+                    {item.date}
                   </div>
                 </div>
               </div>
 
-              {cert.link && (
+              {/* CTA */}
+              {item.link && (
                 <a
-                  href={cert.link}
+                  href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 md:mt-0 inline-flex items-center text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                   onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-2 text-sm font-medium 
+                             text-blue-600 dark:text-blue-400 
+                             hover:underline"
                 >
-                  <span className="mr-1">View Certificate</span>
+                  View Certificate
                   <FaExternalLinkAlt size={12} />
                 </a>
               )}
             </div>
 
-            {/* Expandable content can be added here */}
-            {expandedIndex === index && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300"
-              >
-                <p>
-                  Additional details about this achievement can be displayed
-                  here when expanded.
-                </p>
-              </motion.div>
-            )}
+            {/* Expandable */}
+            <AnimatePresence>
+              {expanded === index && (
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: "auto" }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="px-6 pb-6 text-sm text-gray-600 dark:text-gray-400"
+                >
+                  This achievement highlights competitive performance, teamwork,
+                  and problem-solving under real-world constraints.
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         ))}
       </div>
-
-      {/* Add achievement button - can be implemented if needed */}
-      {certificates.length === 0 && (
-        <div className="text-center py-10 text-gray-500 dark:text-gray-400">
-          No achievements to display yet.
-        </div>
-      )}
-    </motion.div>
+    </section>
   );
 };
 
