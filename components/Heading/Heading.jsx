@@ -7,6 +7,7 @@ export default function Heading() {
       <div className="flex gap-x-5 bg-black">
         {Nav.map((eachItem) => (
           <Link
+            key={eachItem.name}
             href={`${eachItem.link}`}
             className={`px-3 py-2 bg-gradient-to-br from-blue-600 to-green-600 bg-blue-600 rounded-xl duration-300 transition-all ease-in-out hover:scale-110 `}
           >

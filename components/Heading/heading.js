@@ -4,6 +4,10 @@ export const Nav = [
     link: "./techStacks",
   },
   {
+    name: "Experience",
+    link: "./experience",
+  },
+  {
     name: "Achievements & Awards",
     link: "./Achievement",
   },
