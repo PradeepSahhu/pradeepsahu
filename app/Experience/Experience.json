@@ -1,0 +1,18 @@
+ [
+    {
+      "role": "Blockchain Developer",
+      "company": "Metacrafters (Summer Program)",
+      "duration": "Summer 2023",
+      "description":
+        "Developed smart contracts and decentralized applications on the Ethereum blockchain. Learned blockchain fundamentals, contract logic, and DApp integration.",
+      "tech": ["Ethereum", "Smart Contracts","React","Avalanche", "JavaScript"]
+    },
+    {
+      "role": "Full Stack Developer Intern",
+      "company": "A.P. Moller Maersk",
+      "duration": "2025(July) - Present",
+      "description":
+        "Worked as a Full Stack Developer Intern at A.P. Moller Maersk, contributing to the development and enhancement of enterprise-grade applications. Actively involved in building and maintaining backend services using C#.NET, developing responsive and modular frontend components with Angular, and integrating applications with Azure cloud services. Collaborated with cross-functional teams to design and implement RESTful APIs, manage SQL-based databases, and ensure secure, scalable, and high-performance solutions. Gained hands-on experience with cloud-native development on Azure, including application configuration, deployment, and monitoring. Additionally, participated in data-driven problem-solving, where regression and classification techniques were explored for analytical use cases, strengthening understanding of real-world business data workflows and system optimization.",
+      "tech": ["C#.NET", "Angular", "Azure", "SQL"]
+    }
+  ]

@@ -5,7 +5,7 @@ export const Nav = [
   },
   {
     name: "Experience",
-    link: "./experience",
+    link: "./Experience",
   },
   {
     name: "Achievements & Awards",
