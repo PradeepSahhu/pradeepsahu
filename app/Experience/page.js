@@ -64,7 +64,7 @@ export default function Experience() {
                 {exp.tech.map((t, i) => (
                   <span
                     key={i}
-                    className="text-xs px-3 py-1 rounded-full bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-300"
+                    className="text-xs px-3 py-1 rounded-full bg-gradient-to-br from-blue-600 to-green-600 bg-blue-600 "
                   >
                     {t}
                   </span>
